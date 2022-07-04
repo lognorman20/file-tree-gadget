@@ -20,6 +20,7 @@ function App() {
 const Folder = (props) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const {name, children} = props;
+	const direction = isOpen ? 'down' : 'right';
 	const handleClick = () => {
 		setIsOpen(!isOpen);
 	}
@@ -27,8 +28,10 @@ const Folder = (props) => {
 	const childMargin = { marginLeft: '20px' };
 	return <div>
 		<span onClick={handleClick}>
-			{name}
+			<i className="blue folder icon"></i>
+			<i className={`caret ${direction} icon`}></i>
 		</span>
+		{name}
 		<div style={childMargin}>
 			{isOpen ? children : null}
 		</div>
